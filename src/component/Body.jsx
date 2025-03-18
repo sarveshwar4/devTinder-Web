@@ -11,7 +11,7 @@ const body = () => {
   const user = useSelector((state) => state.user);
   const Navigate = useNavigate();
   const fetchUser = async () => {
-    // if (user) return;
+    if (user) return;
     try {
       const res = await axios.get(BASE_URL + "/profile/view", {
         withCredentials: true,
