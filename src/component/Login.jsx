@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("nirmala@gmail.com");
   const [password, setPassword] = useState("Nirmala@123");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const Navigate = useNavigate();
   const handleLogin = async () => {
@@ -22,6 +23,7 @@ const Login = () => {
       dispatch(addUser(res.data));
       Navigate("/");
     } catch (error) {
+      setError(error?.response?.data);
       console.log(error);
     }
   };
@@ -48,6 +50,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </fieldset>
+          <p className="text-red-500">{error}</p>
           <div className="card-actions justify-center mt-2">
             <button className="btn btn-primary" onClick={handleLogin}>
               Sumbit
