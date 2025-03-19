@@ -1,9 +1,14 @@
 import React from 'react'
+import EditProfile from './EditProfile';
+import { useSelector } from 'react-redux';
+import UserCard from './UserCard';
 
 const Profile = () => {
-  return (
-    <div>Profile</div>
-  )
+  const user = useSelector((state)=>state.user);
+  console.log("this is a user section",user)
+  return user &&  (
+      <EditProfile user = {user} />
+  );
 }
 
 export default Profile

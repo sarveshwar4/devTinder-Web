@@ -5,13 +5,14 @@ import Login from "./component/Login.jsx";
 import { Provider } from "react-redux";
 import appStore from "../src/utils/appStore.jsx";
 import Profile from "./component/Profile.jsx";
+import Feed from "./component/Feed.jsx";
 function App() {
   return (
     <Provider store={appStore}>
     <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<Body/>}>
-        <Route path="/" element={<h1>this is a feed section</h1>} />
+        <Route path="/" element={<Feed/>} />
           <Route path="login" element={<Login/>} />
           <Route path = "profile" element={<Profile/>} />
         </Route>

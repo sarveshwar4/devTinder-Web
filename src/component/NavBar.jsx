@@ -17,7 +17,6 @@ const NavBar = () => {
       console.log(err);
     }
   }
-  console.log(user);
   return (
     <div className="navbar bg-base-300 shadow-sm top-0 fixed px-10">
     <div className="flex-1">
