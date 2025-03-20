@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UserCard = ({user}) => {
+const UserCard = ({user, hide}) => {
     const {firstName, lastName, about, age, gender, photoUrl} = user;
   return  (
     <div className="card bg-base-300 w-80 shadow-xl ">

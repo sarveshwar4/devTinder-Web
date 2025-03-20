@@ -11,10 +11,13 @@ const EditProfile = ({ user }) => {
   const [gender, setGender] = useState(user.gender);
   const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
   const [about, setAbout] = useState(user.about);
+  const[errors, setErrors] = useState("");
+  const[toasts, setToasts] = useState(false);
   const dispatch = useDispatch();
   const updateProfile = async() =>{
     try{
-        const res = axios.patch(BASE_URL + "/profile/edit",{
+        setErrors("");
+        const res = await axios.patch(BASE_URL + "/profile/edit",{
            firstName,
            lastName,
            age,
@@ -22,20 +25,26 @@ const EditProfile = ({ user }) => {
            photoUrl,
            about
         }, { withCredentials: true });
-        dispatch(addUser(res));
+         dispatch(addUser(res.data.data));
+         setToasts(true);
+         setTimeout(()=>{
+            setToasts(false);
+         }, 3000)
+        
     }catch(error){
-        console.error(error.message);
+        setErrors(error.response.data);
     }
   }
   return user && (
-    <div className="flex justify-center gap-x-4 my-[6%] ">
+    
+    <div className="flex justify-center my-[6%] rounded-md">
 
       <div className="flex item-center justify-center ">
         <div className="card bg-base-300 w-96 shadow-sm">
           <div className="card-body">
             <h2 className="card-title justify-center">Edit Profile</h2>
             <fieldset className="fieldset">
-              <legend className="fieldset-legend">FirstName:{firstName}</legend>
+              <legend className="fieldset-legend">FirstName:</legend>
               <input
                 type="text"
                 className="input"
@@ -45,7 +54,7 @@ const EditProfile = ({ user }) => {
             </fieldset>
 
             <fieldset className="fieldset">
-              <legend className="fieldset-legend">lastName:{lastName}</legend>
+              <legend className="fieldset-legend">lastName:</legend>
               <input
                 type="text"
                 className="input"
@@ -65,7 +74,7 @@ const EditProfile = ({ user }) => {
             </fieldset>
 
             <fieldset className="fieldset">
-              <legend className="fieldset-legend">age:{age}</legend>
+              <legend className="fieldset-legend">age:</legend>
               <input
                 type="text"
                 className="input"
@@ -75,7 +84,7 @@ const EditProfile = ({ user }) => {
             </fieldset>
 
             <fieldset className="fieldset">
-              <legend className="fieldset-legend">gender:{gender}</legend>
+              <legend className="fieldset-legend">gender:</legend>
               <input
                 type="text"
                 className="input"
@@ -85,7 +94,7 @@ const EditProfile = ({ user }) => {
             </fieldset>
 
             <fieldset className="fieldset">
-              <legend className="fieldset-legend">about:{about}</legend>
+              <legend className="fieldset-legend">about:</legend>
               <input
                 type="text"
                 className="input"
@@ -94,7 +103,7 @@ const EditProfile = ({ user }) => {
               />
             </fieldset>
 
-            <p className="text-red-500"></p>
+            <p className="text-red-500">{errors}</p>
             <div className="card-actions justify-center mt-2">
               <button className="btn btn-primary" onClick={updateProfile}>Sumbit</button>
             </div>
@@ -102,11 +111,17 @@ const EditProfile = ({ user }) => {
         </div>
       </div>
 
-      <div className="ml-36">
+      <div className="ml-16">
         <UserCard
-          user={{ firstName, lastName, age, gender, photoUrl, about }}
+          user={{ firstName, lastName, age, gender, photoUrl, about }} hide = {"hide-buttons"}
         />
       </div>
+       
+      {toasts && <div className="toast toast-top toast-center">
+       <div className="alert alert-success">
+       <span>Profile Updated successfully.</span>
+       </div>
+       </div>}
 
     </div>
   );
