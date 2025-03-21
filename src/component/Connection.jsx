@@ -18,19 +18,21 @@ const Connection = () => {
   useEffect(()=>{
     fetchConnection();
   }, []);
+  if(!Userconnections) return;
+  if(Userconnections === 0) return (<h1>No Connections</h1>)
   return Userconnections && (
     <div className='my-[5%] text-center'>
         <h1 className='text-3xl font-bold text-white mb-2'>Connections</h1>
           {Userconnections.map((connection, key)=>{
             const {firstName, lastName, age, gender, about, photoUrl} = connection
               return(
-              <div className='border rounded-xl w-1/2 m-4 flex p-3 mx-auto bg-base-200' key={key}>
+              <div className=' rounded-lg w-1/2 m-4 flex p-4 mx-auto bg-base-200' key={key}>
                 <div>
                 <img alt="img" className='w-20 h-20 object-cover rounded-full' src={photoUrl}/>
                 </div>
                 <div className='text-left mx-6 flex flex-col '>
                 <h1 className='text-xl font-bold'> {firstName + " " + lastName}</h1>
-                <h1> {about}</h1>
+                <h1 className='mt-1'> {about}</h1>
                 {age  && gender &&  <h1> {age  + ", " + gender}</h1>}
                 </div>   
               </div>)

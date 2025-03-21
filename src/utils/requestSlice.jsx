@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const requestviewSlice = createSlice({
+const requestSlice = createSlice({
     name : "requestView",
     initialState:null,
     reducers:{
@@ -8,5 +8,5 @@ const requestviewSlice = createSlice({
         remmoveUserRequest:(state, action)=>null,
     }
 });
-export const {addUserRequest, remmoveUserRequest}= requestviewSlice.actions;
-export default requestviewSlice.reducer;
+export const {addUserRequest, remmoveUserRequest}= requestSlice.actions;
+export default requestSlice.reducer;
