@@ -102,7 +102,6 @@ const EditProfile = ({ user }) => {
                 onChange={(e) => setAbout(e.target.value)}
               />
             </fieldset>
-
             <p className="text-red-500">{errors}</p>
             <div className="card-actions justify-center mt-2">
               <button className="btn btn-primary" onClick={updateProfile}>Sumbit</button>

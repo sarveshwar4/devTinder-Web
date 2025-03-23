@@ -25,7 +25,7 @@ const Feed = () => {
   }, []);
   return (
     <div className="flex justify-center my-[7%]">
-      {feed.length > 0 ? <UserCard user={feed[2]} /> : <p>Loading feed...</p>}
+      {feed.length > 0 ? <UserCard user={feed[0]} /> : <p>Loading feed...</p>}
     </div>
   );
 };

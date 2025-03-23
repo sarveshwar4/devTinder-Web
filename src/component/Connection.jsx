@@ -11,6 +11,7 @@ const Connection = () => {
       try{
         const res = await axios.get(BASE_URL + "/user/connection/view",{withCredentials: true});
         dispatch(addConnections(res.data.data));
+        console.log(res.data.data)
       }catch(error){
         console.log(error);
       }
@@ -18,12 +19,13 @@ const Connection = () => {
   useEffect(()=>{
     fetchConnection();
   }, []);
-  if(!Userconnections) return;
-  if(Userconnections === 0) return (<h1>No Connections</h1>)
+  if(!Userconnections) return null;
+  if(Userconnections.length === 0) return (<h1>No Connections</h1>)
   return Userconnections && (
     <div className='my-[5%] text-center'>
         <h1 className='text-3xl font-bold text-white mb-2'>Connections</h1>
-          {Userconnections.map((connection, key)=>{
+          {Userconnections.filter(connection => connection !== null).
+          map((connection, key)=>{
             const {firstName, lastName, age, gender, about, photoUrl} = connection
               return(
               <div className=' rounded-lg w-1/2 m-4 flex p-4 mx-auto bg-base-200' key={key}>
