@@ -45,7 +45,7 @@ const Request = () => {
             </div>   
             <div className="card-actions justify-end my-3 ml-[30%]">
           <button className="btn btn-primary" onClick={()=>requestReview("accepted", Request._id)}>accepted</button>
-           <button className="btn btn-secondary ml-2">rejected</button>
+           <button className="btn btn-secondary ml-2" onClick={()=>requestReview("rejected", Request._id)}>rejected</button>
            </div>
            </div>
           )

@@ -9,6 +9,7 @@ import Feed from "./component/Feed.jsx";
 import Connection from "./component/Connection.jsx";
 import RequestRecieved from "./component/Request.jsx";
 import Request from "./component/Request.jsx";
+import Chats from "./component/Chats.jsx";
 function App() {
   return (
     <Provider store={appStore}>
@@ -20,6 +21,7 @@ function App() {
           <Route path = "profile" element={<Profile/>} />
           <Route path="connection" element={<Connection/>}/>
           <Route path="request" element={<Request/>}/>
+          <Route path = "chat/:targetuserId" element={<Chats/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

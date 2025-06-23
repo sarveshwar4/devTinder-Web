@@ -4,11 +4,11 @@ const CardConnection = ({ userRequest }) => {
   const { firstName, lastName, about, photoUrl, skills } = userRequest.fromUserId;
 
   return (
-    <div className="flex items-center justify-between mb-6 p-6 border rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white bg-opacity-90 backdrop-blur-sm">
+    <div className=" flex items-center justify-between mb-6 p-6 border rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white bg-opacity-90 backdrop-blur-sm fixed">
       {/* Left Section: User Info */}
       <div className="flex items-center gap-6">
         {/* User Image */}
-        <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-gray-200">
+        <div className="w-24 h-15 rounded-full overflow-hidden border-2 border-gray-200">
           <img
             src={photoUrl}
             alt={`${firstName} ${lastName}`}
