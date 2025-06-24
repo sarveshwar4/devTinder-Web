@@ -30,6 +30,10 @@ const Connection = () => {
         <h1 className="text-3xl font-bold text-white mb-2">Connections</h1>
         {Userconnections.filter((connection) => connection !== null).map(
           (connection, key) => {
+            // const fromUser = connection.fromUserId;
+            // const toUser = connection.toUserId;
+
+            // if (!fromUser || !toUser) return null;
             const { _id, firstName, lastName, age, gender, about, photoUrl} =
               connection;
             return (
