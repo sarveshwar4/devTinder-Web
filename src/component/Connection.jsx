@@ -7,6 +7,7 @@ import { Link, useParams } from "react-router-dom";
 
 const Connection = () => {
   const Userconnections = useSelector((state) => state.connection);
+  console.log("user connections", Userconnections);
   const dispatch = useDispatch();
   const fetchConnection = async () => {
     try {
@@ -30,10 +31,7 @@ const Connection = () => {
         <h1 className="text-3xl font-bold text-white mb-2">Connections</h1>
         {Userconnections.filter((connection) => connection !== null).map(
           (connection, key) => {
-            // const fromUser = connection.fromUserId;
-            // const toUser = connection.toUserId;
-
-            // if (!fromUser || !toUser) return null;
+            if(!connection) return null;
             const { _id, firstName, lastName, age, gender, about, photoUrl} =
               connection;
             return (
