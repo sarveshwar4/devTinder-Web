@@ -18,7 +18,7 @@ const NavBar = () => {
     }
   }
   return (
-    <div className="navbar bg-base-300 shadow-sm top-0 fixed px-10">
+    <div className="navbar bg-base-300 shadow-sm top-0 fixed px-10 z-10">
     <div className="flex-1">
       <Link to="/" className="btn btn-ghost text-xl">🧑‍💻devTinder</Link>
     </div>
@@ -43,6 +43,7 @@ const NavBar = () => {
           </li>
           <li><Link to= "/connection">connection</Link></li>
           <li><Link to= "/request">request</Link></li>
+          <li><Link to= "/premium">premium</Link></li>
           <li><a onClick={logoutTheUser}>Logout</a></li>
         </ul>
       </div>

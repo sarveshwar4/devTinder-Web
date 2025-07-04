@@ -10,6 +10,7 @@ import Connection from "./component/Connection.jsx";
 import RequestRecieved from "./component/Request.jsx";
 import Request from "./component/Request.jsx";
 import Chats from "./component/Chats.jsx";
+import Premium from "./component/premium.jsx";
 function App() {
   return (
     <Provider store={appStore}>
@@ -21,6 +22,7 @@ function App() {
           <Route path = "profile" element={<Profile/>} />
           <Route path="connection" element={<Connection/>}/>
           <Route path="request" element={<Request/>}/>
+          <Route path="premium" element={<Premium/>}/>
           <Route path = "chat/:targetuserId" element={<Chats/>}/>
         </Route>
       </Routes>

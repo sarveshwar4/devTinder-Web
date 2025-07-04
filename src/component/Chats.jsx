@@ -85,20 +85,18 @@ function Chats() {
       <h1 className="text-2xl font-semibold p-4 border-b border-gray-600  text-gray-800">
         Chats
       </h1>
-
-
       <div className="*:[grid-area:1/1] mb-3 flex flex-row items-center gap-3.5">
         <div className="relative w-3 h-3 ml-2 mb-3">
           <div
             className={`status animate-ping ${
               isOnline ? "bg-green-500" : "bg-red-500"
-            } absolute rounded-full w-full h-full`}
-          ></div>
+            } absolute rounded-full w-full h-full`}>
+            </div>
           <div
             className={`status ${
               isOnline ? "bg-green-500" : "bg-red-500"
-            } rounded-full w-full h-full`}
-          ></div>
+            } rounded-full w-full h-full`}>
+          </div>
         </div>
         <span
           className={`text-sm font-semibold ${
