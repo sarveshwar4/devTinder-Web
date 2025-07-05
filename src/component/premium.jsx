@@ -1,8 +1,21 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BASE_URL from "../utils/constansts";
 
 function Premium() {
+  const [isUserIsPremimum, setIsUserIsPremium] = useState(false);
+  const verifyPaymentUser = async()=>{
+    try {
+      const response = await axios.get(BASE_URL + "/payment/verify", {withCredentials:true});
+      setIsUserIsPremium(response?.data?.data?.isPremium);
+    } catch (error) {
+      console.error("Error verifying payment user:", error);
+    }
+  }
+  useEffect(()=>{
+    verifyPaymentUser();
+  }, []);
+
   const handleBuyClick = async (type) => {
     try {
       const order = await axios.post(
@@ -31,13 +44,14 @@ function Premium() {
         theme: {
           color: '#F37254'
         },
+        handler: verifyPaymentUser,
       };
 
       const rzp = new Razorpay(options);
       rzp.open();
     } catch (error) {}
   };
-  return (
+  return isUserIsPremimum ? <div>Amazing You are the Premium User</div>:(
     <div className="p-[8%]">
       <div className="flex w-full">
         <div className="card bg-base-300 rounded-box grid h-80 grow place-items-center">
